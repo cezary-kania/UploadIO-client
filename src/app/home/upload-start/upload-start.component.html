@@ -1,0 +1,11 @@
+<section class="upload-step1">
+    <p class="upload-step1__text"><span class="upload-step1__text--h">Share</span> your data with orhers!</p>
+
+    <label for="filesInput" class="upload-step1__input-label">Upload now!</label>
+    <input type="file" 
+           class="upload-step1__input" 
+           name="files[]" 
+           id="filesInput"
+           multiple="multiple"
+           (change)="onFilesChange($event)"/>
+</section>

@@ -1,0 +1,16 @@
+<section class="upload">
+    <p class="upload__text"><span class="upload__text--h">Share</span> your data with orhers!</p>
+    <table class="upload__tab">
+        <tr class="upload__tab-row">
+            <th class="upload__tab-header">Files</th>
+        </tr>
+        <tr class="upload__tab-row"
+            *ngFor="let file of files; let id = index">
+            <td class="upload__tab-cell">
+                <p class="upload__filename">{{id+1}}. {{file.filename}}</p>
+                <a class="upload__file-download-link" download="#">Download</a>
+            </td>
+        </tr>
+    </table>
+    <button class="upload__up-btn">New upload</button>
+</section>

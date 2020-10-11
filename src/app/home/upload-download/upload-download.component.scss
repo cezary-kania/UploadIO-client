@@ -1,0 +1,62 @@
+.upload {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    &__text {
+        color: #9A9A9A;
+        font-size: 36px;
+        margin-top: 50px;
+        &--h {
+            color: #61C6CC;
+        }
+    }
+    &__filename {
+        display: block;
+        margin: 0px;
+    }
+    &__file-download-link {
+        cursor: pointer;
+        text-decoration: none;
+        color: #61C6CC;
+        &:hover {
+            color: #9CDBDF;
+            transition: 0.2s;
+        }
+    }
+    &__tab {
+        width: 100%;
+        &-cell {
+            border: 1px solid #C7C7C7;
+            box-sizing: border-box;
+            color: #9E9E9E;
+            padding: 5px 12.5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        &-header {
+            background-color: #61C6CC;
+            color: #fff;
+            font-weight: 400;
+            text-align: center;
+            font-size: 20px;
+            padding: 5px;
+            border-radius: 5px 5px 0px 0px;
+        }
+    }
+
+    &__up-btn {
+        max-width: 100px;
+        margin-top: 20px;
+        padding: 5px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #61C6CC;
+        border: 0px;
+        border-radius: 3px;
+        &:hover {
+            background-color:#fff;
+            color: #61C6CC;
+            transition: 0.2s;
+        }
+    }
+}

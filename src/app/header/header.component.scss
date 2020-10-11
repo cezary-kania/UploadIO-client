@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 70vw;
+    margin: 0px auto;
+    &__brand{
+        color: #61C6CC;
+        text-decoration: none;
+        font-size: 36px;
+    }
+    
+    &__nav {
+
+       
+    }
+    &__link {
+        color: #61C6CC;
+        text-decoration: none;
+        margin-right: 10px;
+        &:hover {
+            color: #9CDBDF;
+            transition: 0.2s;
+        }
+        &:last-child {
+            margin-right: 0px;
+        }
+        &--inversed {
+            background-color: #9CDBDF;
+            border-radius: 7px;
+            padding: 5px 10px;
+            color: #fff;
+            &:hover {
+                background-color: #ffffff;
+                color: #9CDBDF;
+                transition: 0.2s;
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.upload-step1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &__text {
+        color: #9A9A9A;
+        font-size: 36px;
+        margin-top: 50px;
+        &--h {
+            color: #61C6CC;
+        }
+    }
+    
+    &__input {
+        display: none;
+    }
+    &__input-label {
+        margin-top: 70px;
+        background-color: #61C6CC;
+        color: #fff;
+        font-size: 36px;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+            background-color: #fff;
+            color: #61C6CC;
+            transition: 0.2s;
+        }
+    }
+}
