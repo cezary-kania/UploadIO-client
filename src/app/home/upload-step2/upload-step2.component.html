@@ -1,26 +1,58 @@
 <section class="upload">
-    <p class="upload__text"><span class="upload__text--h">Share</span> your data with orhers!</p>
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+    <p class="upload__text"><span class="upload__text--h">Set up</span> your <span class="upload__text--h">upload</span>!</p>
     <table class="upload__tab">
         <tr class="upload__tab-row">
             <th class="upload__tab-header">Files</th>
         </tr>
         <tr class="upload__tab-row"
-            *ngFor="let file of files; let id = index">
+            *ngFor="let filename of filenames; let id = index">
             <td class="upload__tab-cell">
-                {{id+1}}. {{file.filename}}
+                {{id+1}}. {{filename}}
             </td>
         </tr>
     </table>
-    <div class="upload__pass">
-        <label for="pass" class="upload__pass-label">Set password to uploads:</label>
-        <input type="password" name="pass" id="pass" class="upload__pass-input" placeholder="upload password">
-    </div>
-    <div class="upload__exp">
-        <label for="expirationTime" class="upload__exp-label">Upload expires in:</label>
-        <input type="radio" name="expirationTime" id="expirationTime" class="upload__exp-input" value="1"><span class="upload__exp-value">1 day</span> 
-        <input type="radio" name="expirationTime" id="expirationTime" class="upload__exp-input" value="2"><span class="upload__exp-value">2 days</span> 
-        <input type="radio" name="expirationTime" id="expirationTime" class="upload__exp-input" value="7"><span class="upload__exp-value">7 days</span> 
-        <input type="radio" name="expirationTime" id="expirationTime" class="upload__exp-input" value="14"><span class="upload__exp-value">2 weeks</span> 
-    </div>
-    <button class="upload__up-btn">Upload</button>
+    <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <div class="upload__pass">
+            <label for="pass" class="upload__pass-label">Set password to uploads:</label>
+            <input 
+                type="password" 
+                name="upload_pass" 
+                id="pass" 
+                class="upload__pass-input"
+                ngModel 
+                placeholder="(empty)">
+        </div>
+        <div class="upload__exp">
+            <label for="expirationTime" class="upload__exp-label">Upload expires in:</label>
+            <input 
+                type="radio" 
+                name="days_to_expire" 
+                class="upload__exp-input" 
+                value="1"
+                ngModel
+                checked><span class="upload__exp-value">1 day</span> 
+            <input 
+                type="radio" 
+                name="days_to_expire" 
+                class="upload__exp-input"
+                ngModel 
+                value="2"><span class="upload__exp-value">2 days</span> 
+            <input 
+                type="radio" 
+                name="days_to_expire" 
+                class="upload__exp-input"
+                ngModel 
+                value="7"><span class="upload__exp-value">7 days</span> 
+            <input 
+                type="radio" 
+                name="days_to_expire" 
+                class="upload__exp-input"
+                ngModel 
+                value="14"><span class="upload__exp-value">2 weeks</span> 
+        </div>
+        <button class="upload__up-btn" type="submit" [disabled]="error">Upload</button>
+    </form>
 </section>

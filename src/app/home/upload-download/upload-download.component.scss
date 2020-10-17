@@ -59,4 +59,46 @@
             transition: 0.2s;
         }
     }
+
+    &__form {
+        margin: 0px auto;
+        &-header {
+            color: #9A9A9A;
+            margin: 0px auto;
+            font-size: 40px;
+            margin-top: 50px;
+            &--h {
+                color: #61C6CC;
+            }
+        }
+        &-inputs {
+            display: flex;
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        &-input {
+           
+            background-color: #f1f1f1;
+            border: 0px;
+            border-radius: 5px;
+            padding: 7px 25px;
+            font-size: 14px;
+            outline: none;
+        }
+        &-btn {
+            margin-left: 20px;
+            background-color: #61C6CC;
+            color: #fff;
+            border: 0px;
+            border-radius: 5px;
+            padding: 7px 25px;
+            font-size: 14px;
+            &:hover {
+                background-color:#fff;
+                color: #61C6CC;
+                transition: 0.2s;
+            }
+        }
+    }
 }

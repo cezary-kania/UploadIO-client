@@ -1,5 +1,8 @@
-.home__boxes {
-    display: flex;
-    justify-content: space-evenly;
+.home {
     margin-top: 100px;
+
+    &__box { 
+        max-width: 40vw;
+        margin: 0px auto;
+    }
 }

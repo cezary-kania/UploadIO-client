@@ -1,16 +1,42 @@
 <section class="upload">
-    <p class="upload__text"><span class="upload__text--h">Share</span> your data with orhers!</p>
-    <table class="upload__tab">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+    <form *ngIf="isPassRequired"
+        (ngSubmit)="onSubmit(form.value)" 
+        #form="ngForm"
+        class="upload__form">
+        <label for="upload_pass">
+            <h3 class="upload__form-header">Provide <span class="upload__form-header--h">password</span> to upload:</h3>
+        </label>
+        <div class="upload__form-inputs">
+            <input 
+            type="password" 
+            name="upload_pass"
+            class="upload__form-input" 
+            id="upload_pass"
+            placeholder="password"
+            ngModel
+            required>
+            <button type="submit"  class="upload__form-btn" >Get files</button>
+        </div>
+        
+    </form>
+    <p class="upload__text" *ngIf="!isPassRequired"><span class="upload__text--h">Share</span> your data with orhers!</p>
+    <table class="upload__tab" *ngIf="upload">
         <tr class="upload__tab-row">
             <th class="upload__tab-header">Files</th>
         </tr>
         <tr class="upload__tab-row"
-            *ngFor="let file of files; let id = index">
+            *ngFor="let file of upload.uploaded_files; let id = index">
             <td class="upload__tab-cell">
-                <p class="upload__filename">{{id+1}}. {{file.filename}}</p>
-                <a class="upload__file-download-link" download="#">Download</a>
+                <p class="upload__filename">{{file.number_in_upload}}. {{file.filename}}</p>
+                <a class="upload__file-download-link" (click)="onDownload(file.number_in_upload)">Download</a>
             </td>
         </tr>
     </table>
-    <button class="upload__up-btn">New upload</button>
+    <a 
+        class="upload__up-btn" 
+        routerLink="/upload"
+        *ngIf="!isPassRequired">New upload</a>
 </section>

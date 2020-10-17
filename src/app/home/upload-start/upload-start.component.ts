@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
+import {UploadService} from '../../shared/upload.service';
 @Component({
   selector: 'app-upload-start',
   templateUrl: './upload-start.component.html',
@@ -7,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadStartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private uploadService: UploadService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onFilesChange(event : any) {
-    console.log(<HTMLInputElement>event.target.files);
-    
+    const files = <HTMLInputElement>event.target.files;
+    this.uploadService.setFilesToUpload(files);
+    this.router.navigate(['/upload','step2']);
   }
 
 }

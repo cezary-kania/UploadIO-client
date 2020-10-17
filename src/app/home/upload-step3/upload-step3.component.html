@@ -1,11 +1,14 @@
 <section class="upload">
     <p class="upload__text"><span class="upload__text--h">Share</span> your data with orhers!</p>
-    <div class="upload__link">
-        <label for="link" class="upload__link-label">Upload link:</label>
-        <input type="text" name="link" id="link" class="upload__link-input" readonly value="upload.io/upload/13few3141a">
+    <div *ngIf="upload">
+        <div class="upload__link">
+            <label for="link" class="upload__link-label">Upload link:</label>
+            <input type="text" name="link" id="link" class="upload__link-input" readonly value="upload.io/upload/download/{{upload.url_hash}}">
+        </div>
+        <div class="upload__exp">
+            <p class="upload__exp-label">Upload expires in: {{daysToExpire}} days</p>
+        </div>
     </div>
-    <div class="upload__exp">
-        <p class="upload__exp-label">Upload expires in: 7 days</p>
-    </div>
-    <button class="upload__up-btn">New upload</button>
+    
+    <a class="upload__up-btn" routerLink="/upload">New upload</a>
 </section>
