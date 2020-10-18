@@ -1,0 +1,26 @@
+.settings {
+    max-width: 50vw;
+    margin: 100px auto 0px;
+    &__header {
+        color: #61C6CC;
+    }
+    &__content {
+        display: flex;
+    }
+    &__nav {
+        display: flex;
+        flex-direction: column;
+    }
+    &__link {
+        font-size: 14px;
+        color: #24a3aa;
+        margin-top: 12.5px;
+        &:hover {
+            text-decoration: none;
+            color: rgb(117, 117, 117);
+        }
+    }
+    &__route {
+        margin-left: 100px;
+    }
+}

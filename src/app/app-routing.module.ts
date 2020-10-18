@@ -9,6 +9,10 @@ import { UploadStep2Component } from './home/upload-step2/upload-step2.component
 import { UploadStep3Component } from './home/upload-step3/upload-step3.component';
 import {UploadGuard} from './shared/uploadGuard.service';
 import {UploadedGuard} from './shared/uploadedGuard.service';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
+import {SettingsComponent} from './user/settings/settings.component';
+import {AccountDeleteComponent} from './user/settings/account-delete/account-delete.component';
+import {PasswordChangeComponent} from './user/settings/password-change/password-change.component';
 const routes: Routes = [
   {path: 'upload', component: HomeComponent, children: [
     {path: '', component: UploadStartComponent},
@@ -19,7 +23,12 @@ const routes: Routes = [
   {path: '', redirectTo: '/upload', pathMatch: 'full'},
   {path: 'auth/signIn', component: LoginComponent},
   {path: 'auth/signUp', component: SignUpComponent},
-  
+  {path: 'user/dashboard', component: DashboardComponent},
+  {path: 'user/settings', component: SettingsComponent, children: [
+    {path: 'deleteAccount', component: AccountDeleteComponent},
+    {path: 'changePassword', component: PasswordChangeComponent},
+    {path: '', redirectTo: 'deleteAccount', pathMatch: 'prefix'}
+  ]},
   {path: '**', redirectTo: '/upload'},
 
 ];

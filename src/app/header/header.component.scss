@@ -18,6 +18,7 @@
         color: #61C6CC;
         text-decoration: none;
         margin-right: 10px;
+        cursor: pointer;
         &:hover {
             color: #9CDBDF;
             transition: 0.2s;
@@ -35,6 +36,9 @@
                 color: #9CDBDF;
                 transition: 0.2s;
             }
+        }
+        &--small {
+            font-size: 14px;
         }
     }
 }

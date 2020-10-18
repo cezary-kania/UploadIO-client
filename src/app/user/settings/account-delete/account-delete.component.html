@@ -1,0 +1,26 @@
+<div class="accDel">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+    <form class="accDel__form" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <h4 class="accDel__form-header">
+            Delete account
+        </h4>
+        <label for="password" class="accDel__label">Confirm operation with password:</label>
+        <br>
+        <input 
+            type="password" 
+            name="password" 
+            id="password" 
+            class="accDel__input"
+            placeholder="Account password"
+            required
+            ngModel
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"/>
+        <br>
+        <button 
+            type="submit" 
+            class="accDel__btn"
+            [disabled]="!form.valid">Delete</button>
+    </form>
+</div>

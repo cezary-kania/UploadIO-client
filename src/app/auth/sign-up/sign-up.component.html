@@ -1,5 +1,8 @@
 <div class="signup">
-    <form class="signup__form">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+    <form class="signup__form" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
         <h4 class="signup__form-header">
             Sign up to <span class="signup__form-header--highlight">Upload.io</span>
         </h4>
@@ -10,6 +13,8 @@
             name="login" 
             id="login" 
             class="signup__input"
+            placeholder="login (only alphanumeric chars)"
+            ngModel
             required/>
         <br>
         <label for="email" class="signup__label">E-mail:</label>
@@ -19,6 +24,9 @@
             name="email" 
             id="email" 
             class="signup__input"
+            placeholder="email"
+            ngModel
+            email
             required/>
         <br>
         <label for="signup_or_email" class="signup__label">Password:</label>
@@ -28,8 +36,14 @@
             name="password" 
             id="password" 
             class="signup__input"
-            required/>
+            placeholder="Min.8 chars, at least 1 digit, 1 upper letter, 1 lower letter"
+            required
+            ngModel
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"/>
         <br>
-        <button type="submit" class="signup__btn">Sign up</button>
+        <button 
+            type="submit" 
+            class="signup__btn"
+            [disabled]="!form.valid">Sign up</button>
     </form>
 </div>

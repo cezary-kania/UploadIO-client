@@ -1,5 +1,8 @@
 <div class="login">
-    <form class="login__form">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+    <form class="login__form" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
         <h4 class="login__form-header">
             Login to <span class="login__form-header--highlight">Upload.io</span>
         </h4>
@@ -9,7 +12,10 @@
             type="text" 
             name="login_or_email" 
             id="login_or_email" 
-            class="login__input"/>
+            class="login__input"
+            placeholder="Account login"
+            ngModel
+            required/>
         <br>
         <label for="login_or_email" class="login__label">Password:</label>
         <br>
@@ -17,8 +23,15 @@
             type="password" 
             name="password" 
             id="password" 
-            class="login__input"/>
+            class="login__input"
+            placeholder="Password"
+            required
+            ngModel
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}"/>
         <br>
-        <button type="submit" class="login__btn">Sign in</button>
+        <button 
+            type="submit" 
+            class="login__btn"
+            [disabled]="!form.valid && form.touched">Sign in</button>
     </form>
 </div>

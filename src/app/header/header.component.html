@@ -1,12 +1,20 @@
 <header class="header">
-    <a class="header__brand" routerLink="/">Upload.io</a>
+    <a class="header__brand" 
+        [routerLink]="isLogged ? 'user/dashboard' : '/' ">Upload.io</a>
     <nav class="header__nav">
         <div *ngIf="!isLogged">
             <a class="header__link" routerLink="/auth/signIn">Sign in </a>
             <a class="header__link header__link--inversed" routerLink="/auth/signUp">Sign up</a>
         </div>
-        <span *ngIf="isLogged">
-            <a class="header__link" routerLink="/">{{userIdentifier}}</a>
+        <span class="dropdown open" *ngIf="isLogged">
+            <a class="dropdown-toggle header__link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{userIdentifier}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item header__link header__link--small" routerLink="user/dashboard">Storage</a>
+                <a class="dropdown-item header__link header__link--small" routerLink="user/settings">Account settings</a>
+                <a class="dropdown-item header__link header__link--small" (click)="onLogout()">Logout</a>
+            </div>
         </span>
     </nav>
     

@@ -49,5 +49,12 @@
             color: #9CDBDF;
             background-color: #fff;
         }
+        &:disabled {
+            background-color: rgb(226, 226, 226);
+            border-color: rgb(226, 226, 226);
+            &:hover {
+                color: #fff;
+            }
+        }
     }
 }

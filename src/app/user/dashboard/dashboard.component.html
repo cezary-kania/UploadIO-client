@@ -1,0 +1,37 @@
+<div class="dashboard">
+    <div class="dashboard__upload">
+    <label for="fileInput" class="dashboard__upload-label">Upload files</label>
+    <input type="file" 
+            class="dashboard__upload-input" 
+            name="file" 
+            id="fileInput"
+            (change)="onFileChange($event)"/>
+    </div>
+    <div class="dashboard__files">
+        <button class="dashboard__files-delBtn">Delete all</button>
+        <table class="dashboard__files-table">
+            <tr class="dashboard__table-row">
+                <th class="dashboard__table-header">Files</th>
+            </tr>
+            <tr class="dashboard__table-row" *ngFor="let file of files">
+                <td class="dashboard__table-cell">
+                    <div class="dashboard__file-info">
+                        <span class="dashboard__file-info-t">
+                            {{file.filename}}
+                        </span>
+                        <span class="dashboard__file-info-t">
+                            {{file.size}}
+                        </span>
+                        <span class="dashboard__file-info-t">
+                            {{file.uploadDate}}
+                        </span>
+                    </div>
+                    <div class="dashboard__file-btns">
+                        <button class="dashboard__file-btn">edit</button>
+                        <button class="dashboard__file-btn">delete</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,8 +1,6 @@
-.login {
+.accDel {
     max-width: 550px;
-    margin: 100px auto 0px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-    padding: 70px 60px 80px;
+    padding: 0px 0px;
     &__form {
         max-width: 380px;
         margin: 0px auto;
@@ -35,14 +33,14 @@
         }
     }
     &__btn {
-        width: 100%;
+        width: 50%;
         margin-top: 25px;
         background-color: #9CDBDF;
-        padding: 12px;
+        padding: 5px;
         color: #fff;
-        border: 2px dashed  #9CDBDF;
+        border: 0px;
         border-radius: 7px;
-        font-size: 24px;
+        font-size: 16px;
 
         &:hover {
             transition: 0.3s;
