@@ -1,0 +1,91 @@
+.dashboard {
+    display: flex;
+    padding: 60px 40px;
+    &__upload {
+        &-label {
+            background-color: #9CDBDF;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 12.5px 30px;
+            color: #fff;
+            cursor: pointer;
+            &:hover {
+                background-color: #fff;
+                color: #9CDBDF;
+            }
+        }
+        &-input {
+            display: none;
+        }
+    }
+    &__files {
+        margin-left: 50px;
+        width: calc(100% - 200px);
+        &-del {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+        &-delBtn {
+            color: #8A8A8A;
+            border: 0px;
+            border-radius: 5px;
+            font-size: 12px;
+            background-color: #F5F5F5;
+            padding: 7px 15px;
+            cursor: pointer;
+            &:hover {
+                background-color: #fff;
+                color: #9CDBDF;
+                transition: 0.3s;
+            }
+        }
+        &-table {
+            margin-top: 20px;
+            width: 100%;
+        }
+    }
+    &__table {
+        &-header {
+            color: #858585;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        &-row {
+            font-size: 12px;
+            padding: 10px;
+            border: 1px solid  #f2f2f2;
+            &:nth-child(2n+1) {
+                background-color: #f2f2f2;
+            }
+            &:nth-child(2n+0) {
+                background-color: #fff;
+            }
+        }
+        &-cell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+    }
+    &__file-info-t {
+        margin-left: 20px;
+    }
+    &__file-btn {
+        margin-right: 20px;
+        color: #8b8b8b;
+        background-color: transparent;
+        border: 0px;
+        cursor: pointer;
+        &:hover {
+            color: #9CDBDF;
+            transition: 0.3s;
+        }
+        &--highlighted {
+            font-weight: bold;
+        }
+    }
+}

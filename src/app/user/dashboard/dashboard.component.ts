@@ -16,7 +16,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onFileChange(event) {
-    console.log(event);
+  onFileChange(event: any) {
+    const file = <HTMLInputElement>event.target.files[0];
+    console.log(file);
   }
 }

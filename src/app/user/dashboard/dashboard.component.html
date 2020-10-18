@@ -1,14 +1,16 @@
 <div class="dashboard">
     <div class="dashboard__upload">
-    <label for="fileInput" class="dashboard__upload-label">Upload files</label>
-    <input type="file" 
-            class="dashboard__upload-input" 
-            name="file" 
-            id="fileInput"
-            (change)="onFileChange($event)"/>
+        <label for="fileInput" class="dashboard__upload-label">Upload files</label>
+        <input type="file" 
+                class="dashboard__upload-input" 
+                name="file" 
+                id="fileInput"
+                (change)="onFileChange($event)"/>
     </div>
     <div class="dashboard__files">
-        <button class="dashboard__files-delBtn">Delete all</button>
+        <div class="dashboard__files-del">
+            <button class="dashboard__files-delBtn">Delete all</button>
+        </div>
         <table class="dashboard__files-table">
             <tr class="dashboard__table-row">
                 <th class="dashboard__table-header">Files</th>
@@ -27,8 +29,9 @@
                         </span>
                     </div>
                     <div class="dashboard__file-btns">
-                        <button class="dashboard__file-btn">edit</button>
-                        <button class="dashboard__file-btn">delete</button>
+                        <button class="dashboard__file-btn">Edit</button>
+                        <button class="dashboard__file-btn">Delete</button>
+                        <button class="dashboard__file-btn dashboard__file-btn--highlighted">Download</button>
                     </div>
                 </td>
             </tr>
