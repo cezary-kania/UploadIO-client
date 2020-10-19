@@ -1,15 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import {take} from 'rxjs/operators';
 import {SettingsService} from '../settings.service';
 @Component({
   selector: 'app-password-change',
   templateUrl: './password-change.component.html',
   styleUrls: ['./password-change.component.scss']
 })
-export class PasswordChangeComponent implements OnInit, OnDestroy {
+export class PasswordChangeComponent implements OnInit {
   error = null;
   passchanged : boolean = false;
-  passChangeSub : Subscription;
   constructor(private settingsService: SettingsService) { }
 
   ngOnInit(): void {
@@ -19,7 +18,9 @@ export class PasswordChangeComponent implements OnInit, OnDestroy {
     this.passchanged = false;
     const oldPassword = formvalue.password;
     const newPassword = formvalue.new_password;
-    this.passChangeSub = this.settingsService.changePassword(oldPassword, newPassword).subscribe(
+    this.settingsService.changePassword(oldPassword, newPassword)
+    .pipe(take(1))
+    .subscribe(
       response => {
         this.passchanged = true;
       },
@@ -29,8 +30,5 @@ export class PasswordChangeComponent implements OnInit, OnDestroy {
         this.error = errorMessage;
       }
     );
-  }
-  ngOnDestroy() {
-    this.passChangeSub.unsubscribe();
   }
 }

@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import {take} from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import {SettingsService} from '../settings.service';
 @Component({
@@ -7,10 +7,8 @@ import {SettingsService} from '../settings.service';
   templateUrl: './account-delete.component.html',
   styleUrls: ['./account-delete.component.scss']
 })
-export class AccountDeleteComponent implements OnInit, OnDestroy {
+export class AccountDeleteComponent implements OnInit {
   error = null;
-  passChangeSub : Subscription;
-  
   constructor(private settingsService: SettingsService,
               private authService: AuthService) { }
 
@@ -20,7 +18,9 @@ export class AccountDeleteComponent implements OnInit, OnDestroy {
   onSubmit(formvalue) {
     this.error = null;
     const oldPassword = formvalue.password;
-    this.passChangeSub = this.settingsService.deleteAccount(oldPassword).subscribe(
+    this.settingsService.deleteAccount(oldPassword)
+    .pipe(take(1))
+    .subscribe(
       response => {
         this.authService.logout();
       },
@@ -30,8 +30,5 @@ export class AccountDeleteComponent implements OnInit, OnDestroy {
         this.error = errorMessage;
       }
     );
-  }
-  ngOnDestroy() {
-    this.passChangeSub.unsubscribe();
   }
 }

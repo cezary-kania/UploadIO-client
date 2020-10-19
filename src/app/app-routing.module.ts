@@ -13,6 +13,9 @@ import { DashboardComponent } from './user/dashboard/dashboard.component';
 import {SettingsComponent} from './user/settings/settings.component';
 import {AccountDeleteComponent} from './user/settings/account-delete/account-delete.component';
 import {PasswordChangeComponent} from './user/settings/password-change/password-change.component';
+import {UserGuardService} from './auth/userGuard.service';
+import {EditFileComponent} from './user/dashboard/edit-file/edit-file.component';
+
 const routes: Routes = [
   {path: 'upload', component: HomeComponent, children: [
     {path: '', component: UploadStartComponent},
@@ -23,12 +26,17 @@ const routes: Routes = [
   {path: '', redirectTo: '/upload', pathMatch: 'full'},
   {path: 'auth/signIn', component: LoginComponent},
   {path: 'auth/signUp', component: SignUpComponent},
-  {path: 'user/dashboard', component: DashboardComponent},
-  {path: 'user/settings', component: SettingsComponent, children: [
-    {path: 'deleteAccount', component: AccountDeleteComponent},
-    {path: 'changePassword', component: PasswordChangeComponent},
-    {path: '', redirectTo: 'deleteAccount', pathMatch: 'prefix'}
+  {path: 'user', canActivate: [UserGuardService], children: [
+    {path: '', redirectTo: 'dashboard', pathMatch: 'prefix'},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard/editfile/:id', component: EditFileComponent},
+    {path: 'settings', component: SettingsComponent, children: [
+      {path: 'deleteAccount', component: AccountDeleteComponent},
+      {path: 'changePassword', component: PasswordChangeComponent},
+      {path: '', redirectTo: 'deleteAccount', pathMatch: 'prefix'}
+    ]},
   ]},
+  
   {path: '**', redirectTo: '/upload'},
 
 ];

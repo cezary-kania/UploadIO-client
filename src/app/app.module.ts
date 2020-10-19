@@ -10,7 +10,7 @@ import { UploadStartComponent } from './home/upload-start/upload-start.component
 import { UploadStep2Component } from './home/upload-step2/upload-step2.component';
 import { UploadStep3Component } from './home/upload-step3/upload-step3.component'
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { UploadDownloadComponent } from './home/upload-download/upload-download.component';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +19,8 @@ import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { AccountDeleteComponent } from './user/settings/account-delete/account-delete.component';
 import { PasswordChangeComponent } from './user/settings/password-change/password-change.component';
-
+import {JWTInterceptorService} from './auth/JWTInterceptor.service';
+import { EditFileComponent } from './user/dashboard/edit-file/edit-file.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { PasswordChangeComponent } from './user/settings/password-change/passwor
     SettingsComponent,
     AccountDeleteComponent,
     PasswordChangeComponent,
+    EditFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,13 @@ import { PasswordChangeComponent } from './user/settings/password-change/passwor
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JWTInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

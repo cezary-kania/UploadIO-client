@@ -17,9 +17,15 @@
         &-input {
             display: none;
         }
+        &-fspace {
+            font-size: 12px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #A5A5A5;
+        }
     }
     &__files {
-        margin-left: 50px;
+        margin-left: 40px;
         width: calc(100% - 200px);
         &-del {
             width: 100%;
