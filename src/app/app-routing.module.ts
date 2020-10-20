@@ -15,7 +15,9 @@ import {AccountDeleteComponent} from './user/settings/account-delete/account-del
 import {PasswordChangeComponent} from './user/settings/password-change/password-change.component';
 import {UserGuardService} from './auth/userGuard.service';
 import {EditFileComponent} from './user/dashboard/edit-file/edit-file.component';
-
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminUsersListComponent } from './admin-panel/admin-users-list/admin-users-list.component';
+import {AdminUploadsListComponent} from './admin-panel/admin-uploads-list/admin-uploads-list.component';
 const routes: Routes = [
   {path: 'upload', component: HomeComponent, children: [
     {path: '', component: UploadStartComponent},
@@ -35,6 +37,11 @@ const routes: Routes = [
       {path: 'changePassword', component: PasswordChangeComponent},
       {path: '', redirectTo: 'deleteAccount', pathMatch: 'prefix'}
     ]},
+  ]},
+  {path: 'admin', canActivate: [UserGuardService], component: AdminPanelComponent, children: [
+    {path: '', redirectTo: 'users', pathMatch: 'prefix'},
+    {path: 'users', component: AdminUsersListComponent},
+    {path: 'uploads', component: AdminUploadsListComponent},
   ]},
   
   {path: '**', redirectTo: '/upload'},

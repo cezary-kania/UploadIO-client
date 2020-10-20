@@ -17,30 +17,24 @@
                 class="dashboard__files-delBtn"
                 (click)="onDeleteFiles()">Delete all</button>
         </div>
-        <table class="dashboard__files-table">
+        <table class="dashboard__table">
             <tr class="dashboard__table-row">
-                <th class="dashboard__table-header">Files</th>
+                <th class="dashboard__table-header">File</th>
+                <th class="dashboard__table-header" colspan = "3">Size</th>
             </tr>
             <tr class="dashboard__table-row" *ngFor="let file of files">
+                <td class="dashboard__table-cell">{{file.filename}}</td>
+                <td class="dashboard__table-cell">{{file.size}}</td>
+                <td class="dashboard__table-cell dashboard__table-cell--empty"></td>
                 <td class="dashboard__table-cell">
-                    <div class="dashboard__file-info">
-                        <span class="dashboard__file-info-t">
-                            {{file.filename}}
-                        </span>
-                        <span class="dashboard__file-info-t">
-                            size: {{file.size}}
-                        </span>
-                    </div>
-                    <div class="dashboard__file-btns">
-                        <button 
-                            class="dashboard__file-btn"
-                            [routerLink]="['editfile', file.id]">Edit</button>
-                        <button 
-                            class="dashboard__file-btn"
-                            (click)="onFileDelete(file)">Delete</button>
-                        <button  class="dashboard__file-btn dashboard__file-btn--highlighted"
-                            (click)="onFileDownload(file)">Download</button>
-                    </div>
+                    <button 
+                        class="dashboard__file-btn"
+                        [routerLink]="['editfile', file.id]">Edit</button>
+                    <button 
+                        class="dashboard__file-btn"
+                        (click)="onFileDelete(file)">Delete</button>
+                    <button  class="dashboard__file-btn dashboard__file-btn--highlighted"
+                        (click)="onFileDownload(file)">Download</button>
                 </td>
             </tr>
         </table>

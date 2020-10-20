@@ -11,6 +11,9 @@
                 {{userIdentifier}}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item header__link header__link--small" 
+                    *ngIf="isAdmin"
+                    routerLink="admin">Admin Panel</a>
                 <a class="dropdown-item header__link header__link--small" routerLink="user/dashboard">Storage</a>
                 <a class="dropdown-item header__link header__link--small" routerLink="user/settings">Account settings</a>
                 <a class="dropdown-item header__link header__link--small" (click)="onLogout()">Logout</a>

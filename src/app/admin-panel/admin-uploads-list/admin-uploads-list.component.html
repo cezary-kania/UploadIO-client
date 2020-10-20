@@ -1,0 +1,33 @@
+<div class="uploadsList">
+    <div class="uploadsList__operations">
+        <input type="text"
+            placeholder="Search uploads"
+            (input)="onFilterUploads($event)"
+            class="uploadsList__search-input">
+        <button 
+            class="uploadsList__operations-btn"
+            (click)="onDeleteExpiredUploads()">Delete expired</button>
+        <button 
+            class="uploadsList__operations-btn"
+            (click)="onDeleteAllUploads()">Delete all</button>
+    </div>
+    <table class="uploadsList__table">
+        <tr class="uploadsList__table-row">
+            <th class="uploadsList__table-header">URL</th>
+            <th class="uploadsList__table-header">Expired</th>
+            <th class="uploadsList__table-header">Size</th>
+            <th class="uploadsList__table-header"  colspan = "3">Expiration date</th>
+        </tr>
+        <tr class="uploadsList__table-row" *ngFor="let upload of filteredUploads">
+            <td class="uploadsList__table-cell">{{upload.url_hash}}</td>
+            <td class="uploadsList__table-cell">{{upload.has_expired}}</td>
+            <td class="uploadsList__table-cell">{{upload.size}}</td>
+            <td class="uploadsList__table-cell">{{upload.expiration_date}}</td>
+            <td class="uploadsList__table-cell uploadsList__table-cell--empty"></td>
+            <td class="uploadsList__table-cell">
+                <button  class="uploadsList__btn uploadsList__btn--highlighted"
+                (click)="onUploadDelete(upload)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

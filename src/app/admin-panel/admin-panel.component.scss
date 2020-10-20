@@ -1,0 +1,22 @@
+.adminPanel {
+    display: flex;
+    margin: 50px auto;
+    max-width: 80vw;
+
+    &__nav {
+        margin-right: 70px;
+
+        &-list {
+            list-style-type: none;
+            padding: 0px;
+
+        }
+        &-item {
+           color: rgb(182, 182, 182);
+           margin-bottom: 10px;
+        }
+        &-link {
+            cursor: pointer;
+        }
+    }
+}

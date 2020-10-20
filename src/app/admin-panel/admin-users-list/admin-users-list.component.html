@@ -1,0 +1,33 @@
+<div class="userList">
+    <input type="text"
+        placeholder="Search user"
+        (input)="onFilterUsers($event)"
+        class="userList__search-input">
+    <table class="userList__table">
+        <tr class="userList__table-row">
+            <th class="userList__table-header">Login</th>
+            <th class="userList__table-header">E-mail</th>
+            <th class="userList__table-header" colspan="4">Type</th>
+        </tr>
+        <tr class="userList__table-row" *ngFor="let user of filteredUsers">
+            <td class="userList__table-cell">{{user.login}}</td>
+            <td class="userList__table-cell">{{user.email}}</td>
+            <td class="userList__table-cell">{{user.account_type}}</td>
+            <td class="userList__table-cell userList__table-cell--empty"></td>
+            <td class="userList__table-cell">
+                <button  class="userList__btn userList__btn--highlighted"
+                (click)="onUserDelete(user)">Delete</button>
+            </td>
+            <td class="userList__table-cell">
+                <button
+                    *ngIf="user.account_type == 'user'"  
+                    class="userList__btn userList__btn--highlighted"
+                    (click)="onPromoteUser(user)">Promote to admin</button>
+                <button
+                    *ngIf="user.account_type == 'admin'"  
+                    class="userList__btn userList__btn--highlighted"
+                    (click)="onDegradeUser(user)">Degrade to user</button>
+            </td>
+        </tr>
+    </table>
+</div>

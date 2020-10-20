@@ -21,6 +21,9 @@ import { AccountDeleteComponent } from './user/settings/account-delete/account-d
 import { PasswordChangeComponent } from './user/settings/password-change/password-change.component';
 import {JWTInterceptorService} from './auth/JWTInterceptor.service';
 import { EditFileComponent } from './user/dashboard/edit-file/edit-file.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminUsersListComponent } from './admin-panel/admin-users-list/admin-users-list.component';
+import { AdminUploadsListComponent } from './admin-panel/admin-uploads-list/admin-uploads-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,9 @@ import { EditFileComponent } from './user/dashboard/edit-file/edit-file.componen
     AccountDeleteComponent,
     PasswordChangeComponent,
     EditFileComponent,
+    AdminPanelComponent,
+    AdminUsersListComponent,
+    AdminUploadsListComponent,
   ],
   imports: [
     BrowserModule,
