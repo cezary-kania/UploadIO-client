@@ -13,6 +13,7 @@ import { UserStorage } from '../userStorage.model';
 export class UserStorageService {
     private apiUrl: string = environment.apiUrl;
     storage = new BehaviorSubject<UserStorage>(null);
+    file = new BehaviorSubject<StorageElement>(null);
     error : Subject<string> = new  Subject<string>();
     
     constructor(private http: HttpClient,
@@ -24,6 +25,17 @@ export class UserStorageService {
             .subscribe(
                 storage => {
                     this.storage.next(storage);
+                },
+                error => {
+                    this.error.next('Something gone wrong.'); 
+                }
+            );
+    }
+    clearStorage() {
+        this.http.delete(`${this.apiUrl}/users/storage/`)
+            .subscribe(
+                response => {
+                    this.getStorageInfo();
                 },
                 error => {
                     this.error.next('Something gone wrong.'); 
@@ -80,7 +92,7 @@ export class UserStorageService {
     changefilename(file, newFilename) {
         this.editFile(file, {filename : newFilename});
     }
-    toggleSharing(file,  shared : boolean, upload_pass : string ='') {
+    toggleSharing(file,  shared : string, upload_pass : string ='') {
         this.editFile(file,
             {
                 shared : shared,
@@ -93,7 +105,7 @@ export class UserStorageService {
             propertyObj)
             .subscribe(
                 response => {
-                    console.log(response);
+                    this.file.next(response);
                     this.getStorageInfo();
                 },
                 error => {
@@ -102,5 +114,12 @@ export class UserStorageService {
                     this.error.next(message);
                 }
             );
+    }
+    getFileById(fileId: number) {
+        if(!this.storage.getValue()) return null;
+        const file = this.storage.getValue()
+            .storage_elements.find(file => file.id == fileId);
+        if(typeof file === 'undefined') return null;
+        this.file.next(file);
     }
 }

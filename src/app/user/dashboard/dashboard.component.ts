@@ -48,6 +48,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.error = null;
     this.storageService.deleteFile(file);
   }
+  onDeleteFiles() {
+    this.error = null;
+    this.storageService.clearStorage();
+  }
   calcFreeSpace() {
     if(!this.storage) return "0B";
     let usedSpace = this.storage.used_space;

@@ -55,7 +55,7 @@ export class UploadService {
 
     getUploadByUrl(uploadURL: string, upload_pass = '') {
         return this.http.get<{Upload : Upload}>(`${this.apiUrl}/uploads/upload`, {
-            headers: new HttpHeaders({'uploadPass': upload_pass}),
+            headers: new HttpHeaders({uploadPass: upload_pass}),
             params : new HttpParams().set('upload_hash', uploadURL)
         });
     }

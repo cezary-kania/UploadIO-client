@@ -15,10 +15,9 @@ export class JWTInterceptorService implements HttpInterceptor {
                 if(!user) {
                     return next.handle(req);
                 }
+                const newHeaders = req.headers.append('Authorization',`Bearer ${user.access_token}`);
                 const newRequest = req.clone({
-                    headers : new HttpHeaders(
-                        {Authorization : `Bearer ${user.access_token}`}
-                    )
+                    headers : newHeaders
                 });
                 return next.handle(newRequest);
             })

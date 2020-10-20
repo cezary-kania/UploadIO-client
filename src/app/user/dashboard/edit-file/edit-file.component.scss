@@ -1,0 +1,79 @@
+.fileEdit {
+    max-width: 70vw;
+    margin: 50px auto 0px;
+    text-align: center;
+    &__icon {
+        color: #cecece;
+        font-size: 12em;
+    }
+    &__mid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-download, &-delete {
+        border: 0px;
+        color: #fff;
+        padding: 7.5px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+    &-download {
+        background-color: rgb(71, 201, 67);
+        &:hover {
+            color:rgb(71, 201, 67);
+            background-color: #fff;
+            transition: 0.2s;
+        }
+    }
+    &-delete {
+        background-color: rgb(201, 67, 67);
+        
+        &:hover {
+            color: rgb(201, 67, 67);
+            background-color: #fff;
+            transition: 0.2s;
+        }
+    }
+    &__filename {
+        &-input {
+            border: 1px solid  rgb(216, 216, 216);
+            outline: none;
+            padding: 4px 20px;
+            font-size: 14px;
+            color:  rgb(172, 172, 172);
+            &::placeholder {
+                color:  rgb(172, 172, 172);
+            }
+        }
+        &-save-btn {
+            border: 0px;
+            border-radius: 0px 5px 5px 0px;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: rgb(216, 216, 216);
+        }
+    }
+    &__shareBtn {
+        border: 0px;
+        color: #fff;
+        padding: 10px 70px;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: rgb(63, 153, 160);
+        &:hover {
+            color:rgb(63, 153, 160);
+            background-color: #fff;
+            transition: 0.2s;
+        }
+    }
+    &__shareUrl {
+        margin-top: 20px;
+        font-size: 14px;
+        color: rgb(173, 173, 173);
+        &--bold {
+            font-weight: bold;
+        }
+    }
+}

@@ -1,1 +1,44 @@
-<p>edit-file works!</p>
+<div class="fileEdit">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+    <div class="fileEdit__top" *ngIf="file">
+        <input type="text" 
+           name="filename" 
+           class="fileEdit__filename-input"
+           placeholder="filename"
+           [value]="file.filename"
+           #filenameInput>
+        <button 
+            class="fileEdit__filename-save-btn"
+            (click)="onFilenameChange(filenameInput.value)">Change</button>
+    </div>
+    <div class="fileEdit__mid">
+        <button class="fileEdit-delete"
+            (click)="onDelete()">Delete</button>
+        <i class="icon-doc-text-inv fileEdit__icon"></i>
+        <button class="fileEdit-download"
+            (click)="onDownload()">Download</button>
+    </div>
+    <div class="fileEdit__bottom"  *ngIf="file">
+        <div *ngIf="!file.is_shared">
+            <button 
+                class="fileEdit__shareBtn" 
+                (click)="onShare(sharePassInput.value)">Share</button>
+            <br>
+            <br>
+            <input type="password" 
+                name="upload_pass" 
+                class="fileEdit__filename-input"
+                placeholder="share password"
+                #sharePassInput>
+        </div>
+        
+        <button 
+            class="fileEdit__shareBtn" 
+            *ngIf="file.is_shared"
+            (click)="onDisableShare()">Disable sharing</button>
+        <p class="fileEdit__shareUrl" *ngIf="file.is_shared">Share url: <a href="http://localhost:4200/upload/download/{{file.share_url}}"
+            class="fileEdit__shareUrl--bold">localhost:4200/upload/download/{{file.share_url}}</a></p>
+    </div>
+</div>
