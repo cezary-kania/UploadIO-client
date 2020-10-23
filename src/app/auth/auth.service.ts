@@ -11,7 +11,8 @@ import { User } from '../user/user.model';
 @Injectable({providedIn: 'root'})
 export class AuthService {
     private apiUrl: string = environment.apiUrl;
-    
+    private refTokenExpTimeout : number = null;
+    private tokenRefInterval : number = null;
     user = new BehaviorSubject<User>(null);
     error : Subject<string> = new  Subject<string>();
     
@@ -27,17 +28,9 @@ export class AuthService {
             }
         ).subscribe(
             response => {
-                const user = new User(response.login, 
-                    response.email, 
-                    response.account_type, 
-                    response.account_creation_date,
-                    response.access_token,
-                    response.refresh_token,
-                    this.GenExpirationDate());
-                this.user.next(user);
-                localStorage.setItem('user', JSON.stringify(user));
+                const user = this.getUserFromResp(response);
+                this.updateUser(user);
                 this.router.navigate(['/user','dashboard']);
-                
             },
             error => {
                 let errorMessage = "Unknown error occured";
@@ -74,15 +67,8 @@ export class AuthService {
             }
         ).subscribe(
             response => {
-                const user = new User(response.login, 
-                                      response.email, 
-                                      response.account_type, 
-                                      response.account_creation_date,
-                                      response.access_token,
-                                      response.refresh_token,
-                                      this.GenExpirationDate());
-                this.user.next(user);
-                localStorage.setItem('user', JSON.stringify(user));
+                const user = this.getUserFromResp(response);
+                this.updateUser(user);
                 this.router.navigate(['/user','dashboard']);
             },
             error => {
@@ -99,7 +85,10 @@ export class AuthService {
         this.user.next(null);
         this.router.navigate(['/']);
         localStorage.removeItem('user');
-        
+        if(this.refTokenExpTimeout) clearTimeout(this.refTokenExpTimeout);
+        this.refTokenExpTimeout = null;
+        if(this.tokenRefInterval) clearInterval(this.tokenRefInterval);
+        this.tokenRefInterval = null;
     }
     initialLogin() {
         let userData : {
@@ -109,7 +98,8 @@ export class AuthService {
             account_creation_date: string,
             access_token: string,
             refresh_token: string,
-            tokenExpiration : Date 
+            tokenExpiration : Date,
+            refreshTokenExpiration : Date
         } = JSON.parse(localStorage.getItem('user'));
         if(!userData) return;
         const user = new User(userData.login,
@@ -118,13 +108,45 @@ export class AuthService {
                         userData.account_creation_date,
                         userData.access_token,
                         userData.refresh_token,
-                        new Date(userData.tokenExpiration));
-        if(user.tokenExpired) this.router.navigate(['/']);
-        else this.user.next(user); 
+                        new Date(userData.tokenExpiration),
+                        new Date(userData.refreshTokenExpiration));
+        if(user.refreshTokenExpired) {
+            this.logout();
+        } else {
+            if(user.tokenExpired) this.refreshAuthToken();
+            this.updateUser(user);
+        }
     }
-    private GenExpirationDate() : Date {
-        let expirationDate = new Date();
-        expirationDate.setDate(expirationDate.getDate() + 1);
-        return expirationDate;
+    
+    private refreshAuthToken() {
+        this.http.post<{access_token : string}>(`${this.apiUrl}/users/auth/get_access_token`, {})
+            .subscribe(
+                response => {
+                    const user = this.user.getValue();
+                    user.access_token = response.access_token;
+                    this.user.next(user);
+                    localStorage.setItem('user', JSON.stringify(user));
+                }
+            )
     }
+    private updateUser(user : User) {
+        this.refTokenExpTimeout = setTimeout(()=> {
+            this.logout();
+        },user.timeToRefTokenExpire);
+        this.tokenRefInterval = setInterval(()=> {
+            this.refreshAuthToken();
+        },User.tokenExpirationTime);
+        this.user.next(user);
+        localStorage.setItem('user', JSON.stringify(user));
+    }
+    private getUserFromResp(userData) : User {
+        return new User(userData.login, 
+            userData.email, 
+            userData.account_type, 
+            userData.account_creation_date,
+            userData.access_token,
+            userData.refresh_token,
+            User.GenTokenExpirationDate(),
+            User.GenRefTokenExpirationDate());
+    }   
 }
