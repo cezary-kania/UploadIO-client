@@ -49,6 +49,7 @@
         margin-top: 20px;
         padding: 5px;
         font-size: 16px;
+        text-decoration: none;
         color: #fff;
         background-color: #61C6CC;
         border: 0px;
@@ -89,6 +90,7 @@
         &-btn {
             margin-left: 20px;
             background-color: #61C6CC;
+            
             color: #fff;
             border: 0px;
             border-radius: 5px;
@@ -99,6 +101,32 @@
                 color: #61C6CC;
                 transition: 0.2s;
             }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .upload {
+        align-items: center;
+        &__text {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        &__up-btn {
+            width: 80%;
+            margin-top: 50px;
+            max-width: none;
+            font-size: 32px;
+            text-align: center;
+        }
+        &__tab-cell {
+            display: block;
+            text-align: center;
+        }
+        &__filename {
+            word-wrap: break-word;
+            max-width: 300px;
         }
     }
 }

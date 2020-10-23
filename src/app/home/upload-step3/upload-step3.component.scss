@@ -36,8 +36,8 @@
         }
         &-input {
             border: 1px solid #2B9EB7;
+            width: 80%;
             margin-left: 20px;
-            width: 70%;
             border-radius: 3px;
             font-size: 14px;
             padding: 5px 15px;
@@ -63,10 +63,30 @@
         background-color: #61C6CC;
         border: 0px;
         border-radius: 3px;
+        text-decoration: none;
         &:hover {
             background-color:#fff;
             color: #61C6CC;
             transition: 0.2s;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .upload {
+        align-items: center;
+        &__text {
+            text-align: center;
+        }
+        &__up-btn {
+            width: 80%;
+            max-width: none;
+            font-size: 32px;
+            text-align: center;
+        }
+        &__link-input {
+            width: 100%;
+            margin: 0px auto;
         }
     }
 }

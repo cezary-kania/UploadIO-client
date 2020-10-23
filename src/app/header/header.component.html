@@ -8,7 +8,7 @@
         </div>
         <span class="dropdown open" *ngIf="isLogged">
             <a class="dropdown-toggle header__link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{userIdentifier}}
+                {{(userIdentifier.length>25) ? (userIdentifier | slice:0:25) + '...':(userIdentifier)}}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item header__link header__link--small" 

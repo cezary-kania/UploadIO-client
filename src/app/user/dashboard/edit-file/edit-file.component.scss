@@ -39,7 +39,7 @@
         &-input {
             border: 1px solid  rgb(216, 216, 216);
             outline: none;
-            padding: 4px 20px;
+            padding: 10px 20px;
             font-size: 14px;
             color:  rgb(172, 172, 172);
             &::placeholder {
@@ -49,18 +49,28 @@
         &-save-btn {
             border: 0px;
             border-radius: 0px 5px 5px 0px;
-            padding: 5px 10px;
+            padding: 10px 20px;
             font-size: 14px;
             color: #fff;
             background-color: rgb(216, 216, 216);
         }
     }
+    &__sharePass-input {
+        border: 1px solid  rgb(216, 216, 216);
+        outline: none;
+        padding: 10px 25px;
+        font-size: 14px;
+        color:  rgb(172, 172, 172);
+        &::placeholder {
+            color:  rgb(172, 172, 172);
+        }
+    }
     &__shareBtn {
         border: 0px;
         color: #fff;
-        padding: 10px 70px;
-        font-size: 16px;
-        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 0px 5px 5px 0px;
         background-color: rgb(63, 153, 160);
         &:hover {
             color:rgb(63, 153, 160);
@@ -74,6 +84,27 @@
         color: rgb(173, 173, 173);
         &--bold {
             font-weight: bold;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .fileEdit {
+        &__mid {
+            flex-direction: column;
+        }
+        &__icon {
+            order: -1;
+        }
+        &-download {
+            width: 70%;
+            padding: 10px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+        &-delete {
+            width: 70%;
+            padding: 10px;
         }
     }
 }

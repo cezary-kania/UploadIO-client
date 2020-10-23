@@ -30,7 +30,7 @@
         <tr class="upload__tab-row"
             *ngFor="let file of upload.uploaded_files; let id = index">
             <td class="upload__tab-cell">
-                <p class="upload__filename">{{file.number_in_upload}}. {{file.filename}}</p>
+                <p class="upload__filename">{{file.number_in_upload}}.{{file.filename}}</p>
                 <a class="upload__file-download-link" (click)="onDownload(file.number_in_upload)">Download</a>
             </td>
         </tr>

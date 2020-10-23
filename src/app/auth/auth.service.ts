@@ -114,6 +114,12 @@ export class AuthService {
             this.logout();
         } else {
             if(user.tokenExpired) this.refreshAuthToken();
+            setTimeout(()=> {
+                this.refreshAuthToken();
+                this.tokenRefInterval = setInterval(()=> {
+                    this.refreshAuthToken();
+                },User.tokenExpirationTime);
+            }, user.timeToTokenExpire);
             this.updateUser(user);
         }
     }
@@ -124,6 +130,7 @@ export class AuthService {
                 response => {
                     const user = this.user.getValue();
                     user.access_token = response.access_token;
+                    user.tokenExpiration = User.GenTokenExpirationDate();
                     this.user.next(user);
                     localStorage.setItem('user', JSON.stringify(user));
                 }
@@ -133,9 +140,6 @@ export class AuthService {
         this.refTokenExpTimeout = setTimeout(()=> {
             this.logout();
         },user.timeToRefTokenExpire);
-        this.tokenRefInterval = setInterval(()=> {
-            this.refreshAuthToken();
-        },User.tokenExpirationTime);
         this.user.next(user);
         localStorage.setItem('user', JSON.stringify(user));
     }

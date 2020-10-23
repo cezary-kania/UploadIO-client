@@ -6,29 +6,6 @@
         outline: none;
         font-size: 14px;
     }
-    &__upload {
-        &-label {
-            background-color: #9CDBDF;
-            border-radius: 5px;
-            font-size: 16px;
-            padding: 12.5px 30px;
-            color: #fff;
-            cursor: pointer;
-            &:hover {
-                background-color: #fff;
-                color: #9CDBDF;
-            }
-        }
-        &-input {
-            display: none;
-        }
-        &-fspace {
-            font-size: 12px;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #A5A5A5;
-        }
-    }
     &__table {
         margin-top: 20px;
         width: 90%;
@@ -80,6 +57,33 @@
         &:hover {
             color: #c42c21;
             transition: 0.2s;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .uploadsList {
+        &__table {
+            margin: 0px auto;
+            width: 100%;
+        }
+        &__table-header {
+            padding: 10px;
+        }
+        &__table-cell {
+            max-width: calc((100vw - 140px) /3);
+            margin: 0px auto;
+            word-wrap: break-word;
+            text-align: center;
+            padding: 10px;
+            &--empty{
+                width: 0px;
+                display: none;
+            }
+        }
+        &__operations {
+            display: flex;
+            margin: 10px auto 40px;
         }
     }
 }

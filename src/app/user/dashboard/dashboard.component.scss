@@ -90,3 +90,31 @@
         }
     }
 }
+
+@media (max-width: 800px) {
+    .dashboard {
+        flex-direction: column;
+        &__upload {
+            width: 100%;
+            text-align: center;
+            &-fspace {
+                display: none;
+            }
+            &-label {
+                font-size: 32px;
+            }
+        }
+        &__files {
+            margin-left: 0px;
+            width: 100%;
+            &-del {
+                display: none;
+            }
+        }
+        &__table-cell {
+            max-width: calc((100vw - 80px) /3);
+            word-wrap: break-word;
+            text-align: center;
+        }
+    }
+}

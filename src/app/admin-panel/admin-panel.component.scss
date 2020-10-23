@@ -9,7 +9,6 @@
         &-list {
             list-style-type: none;
             padding: 0px;
-
         }
         &-item {
            color: rgb(182, 182, 182);
@@ -17,6 +16,19 @@
         }
         &-link {
             cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .adminPanel {
+        flex-direction: column;
+        &__nav {
+            margin-right: 0px;
+            &-list {
+                display: flex;
+                justify-content: space-around;
+            }
         }
     }
 }

@@ -24,3 +24,22 @@
         margin-left: 100px;
     }
 }
+
+@media (max-width: 800px) {
+    .settings {
+        margin: 30px auto 0px;
+        max-width: 80vw;
+        &__nav {
+            margin-top: 20px;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        &__content {
+            flex-direction: column;
+        }
+        &__route {
+            margin-top: 40px;
+            margin-left: 0px;
+        }
+    }
+}

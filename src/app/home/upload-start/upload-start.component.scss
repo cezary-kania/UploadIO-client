@@ -6,6 +6,7 @@
         color: #9A9A9A;
         font-size: 36px;
         margin-top: 50px;
+        text-align: center;
         &--h {
             color: #61C6CC;
         }
@@ -21,11 +22,18 @@
         font-size: 36px;
         padding: 10px;
         border-radius: 5px;
+        text-align: center;
         cursor: pointer;
         &:hover {
             background-color: #fff;
             color: #61C6CC;
             transition: 0.2s;
         }
+    }
+}
+
+@media (max-width: 800px) {
+    .upload-step1__text {
+        margin-top: 0px;
     }
 }

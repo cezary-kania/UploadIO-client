@@ -6,32 +6,9 @@
         outline: none;
         font-size: 14px;
     }
-    &__upload {
-        &-label {
-            background-color: #9CDBDF;
-            border-radius: 5px;
-            font-size: 16px;
-            padding: 12.5px 30px;
-            color: #fff;
-            cursor: pointer;
-            &:hover {
-                background-color: #fff;
-                color: #9CDBDF;
-            }
-        }
-        &-input {
-            display: none;
-        }
-        &-fspace {
-            font-size: 12px;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #A5A5A5;
-        }
-    }
     &__table {
         margin-top: 20px;
-        width: 90%;
+        width: 100%;
         &-header {
             color: #858585;
             font-size: 14px;
@@ -68,6 +45,24 @@
         }
         &--highlighted {
             font-weight: bold;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .userList {
+        &__table-header {
+            padding: 10px;
+        }
+        &__table-cell {
+            max-width: calc((100vw - 135px) /4);
+            word-wrap: break-word;
+            text-align: center;
+            padding: 10px;
+            &--empty{
+                width: 0px;
+                display: none;
+            }
         }
     }
 }

@@ -6,3 +6,12 @@
         margin: 0px auto;
     }
 }
+
+@media (max-width: 800px) {
+    .home {
+        margin-top: 50px;
+        &__box {
+            max-width: 70vw;
+        }
+    }
+}

@@ -22,20 +22,19 @@
     </div>
     <div class="fileEdit__bottom"  *ngIf="file">
         <div *ngIf="!file.is_shared">
+            <input type="password" 
+                name="upload_pass" 
+                class="fileEdit__sharePass-input"
+                placeholder="Password (optional)"
+                #sharePassInput>
             <button 
                 class="fileEdit__shareBtn" 
                 (click)="onShare(sharePassInput.value)">Share</button>
-            <br>
-            <br>
-            <input type="password" 
-                name="upload_pass" 
-                class="fileEdit__filename-input"
-                placeholder="share password"
-                #sharePassInput>
         </div>
         
         <button 
-            class="fileEdit__shareBtn" 
+            class="fileEdit__shareBtn"
+            [ngStyle]="{'borderRadius': file.is_shared ? '5px' : '' }" 
             *ngIf="file.is_shared"
             (click)="onDisableShare()">Disable sharing</button>
         <p class="fileEdit__shareUrl" *ngIf="file.is_shared">Share url: <a href="http://localhost:4200/upload/download/{{file.share_url}}"
