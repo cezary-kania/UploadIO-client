@@ -34,7 +34,7 @@ export class User {
     }
     public static GenRefTokenExpirationDate() : Date {
         let expirationDate = new Date();
-        expirationDate.setSeconds(expirationDate.getSeconds() + 60*60*24*30);
+        expirationDate.setSeconds(expirationDate.getSeconds() + 60*60*24*14);
         return expirationDate;
     }
 }
