@@ -20,7 +20,7 @@ export class User {
         return 0;
     }
     get timeToRefTokenExpire() {
-        const toExpire = this.tokenExpiration.getTime() - new Date().getTime();
+        const toExpire = this.refreshTokenExpiration.getTime() - new Date().getTime();
         if(toExpire >= 0) return toExpire;
         return 0;
     }
