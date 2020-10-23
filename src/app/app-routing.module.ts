@@ -18,6 +18,8 @@ import {EditFileComponent} from './user/dashboard/edit-file/edit-file.component'
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminUsersListComponent } from './admin-panel/admin-users-list/admin-users-list.component';
 import {AdminUploadsListComponent} from './admin-panel/admin-uploads-list/admin-uploads-list.component';
+import {AdminGuardService } from './auth/adminGuard.service';
+
 const routes: Routes = [
   {path: 'upload', component: HomeComponent, children: [
     {path: '', component: UploadStartComponent},
@@ -38,7 +40,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'deleteAccount', pathMatch: 'prefix'}
     ]},
   ]},
-  {path: 'admin', canActivate: [UserGuardService], component: AdminPanelComponent, children: [
+  {path: 'admin', canActivate: [AdminGuardService], component: AdminPanelComponent, children: [
     {path: '', redirectTo: 'users', pathMatch: 'prefix'},
     {path: 'users', component: AdminUsersListComponent},
     {path: 'uploads', component: AdminUploadsListComponent},
