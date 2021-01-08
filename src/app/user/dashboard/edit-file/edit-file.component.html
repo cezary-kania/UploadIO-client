@@ -38,6 +38,6 @@
             *ngIf="file.is_shared"
             (click)="onDisableShare()">Disable sharing</button>
         <p class="fileEdit__shareUrl" *ngIf="file.is_shared">Share url: <a href="http://localhost:4200/upload/download/{{file.share_url}}"
-            class="fileEdit__shareUrl--bold">localhost:4200/upload/download/{{file.share_url}}</a></p>
+            class="fileEdit__shareUrl--bold">upload.io/upload/download/{{file.share_url}}</a></p>
     </div>
 </div>
